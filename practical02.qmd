@@ -1,7 +1,7 @@
 ---
 title: "Getting started with R"
-author: Your name here
-date: today
+author: Haolin ZOU
+date: 23th Sep 2024
 format: html
 ---
 
@@ -11,23 +11,26 @@ format: html
 
 ```{r}
 # Your answer in code
-
+V_L <- c("A","B","C")
+V_L
 ```
 > Your answer as text
-
+The vector name is V_L
+ "A" "B" "C"
 
 
 * Assign the vector to a variable `my_letters`
 ```{r}
 # Your answer in code
-
+my_letters <- V_L
+my_letters
 ```
 
 
 * Check the what happens when you run `letters` (just this) on the command line.
 ```{r}
 # Your answer in code
-
+letters
 ```
 
 > Your answer as text
@@ -37,8 +40,8 @@ format: html
 * What happens when you concatenate two vectors? Add `c(my_letters , my_letters)`
 ```{r}
 # Your answer in code
-
-
+Con_V <- c(my_letters,my_letters)
+Con_V
 ```
 
 > Your answer as text
@@ -48,8 +51,8 @@ format: html
 * Add the number 1 to letters. What happens to the type of the vector?
 ```{r}
 # Your answer in code
-
-
+V_add <- c(letters,1)
+V_add
 ```
 
 > Your answer as text
@@ -65,11 +68,11 @@ format: html
 
 ```{r}
 # Your answer in code
-
-
-
-
-
+my_vec <- 1:8
+my_vec_1 <- my_vec + 2
+my_vec_1
+my_vec_2 <- my_vec + c(1,2,3,4)
+my_vec_2
 ```
 
 
@@ -95,25 +98,29 @@ format: html
 
 ```{r}
 # Your answer in code
-
-
-
-
-
-
+A <- matrix(c(4,9,10,1,5,7),3,2)
+A
+dim(A)
+A[2,2]
+A <- cbind(A, c(0,0,0))
+A
+A[1,1] <- 0
+A
+A_T <- t(A)
+A_T
 ```
 
 
 8. Are any values in `A` larger than 10? 
 ```{r}
 # Your answer in code
-
+any(A > 10)
 ```
 
 9. Are all values in `A` smaller than 10?
 ```{r}
 # Your answer in code
-
+all(A < 10)
 ```
 
 ### Exercise 4
@@ -122,11 +129,10 @@ format: html
 
 ```{r}
 # Your answer in code
-
-
-
-
-
+# Your answer in code
+F_sum <- function(a,b){
+    as.numeric(a) + as.numeric(b)
+}
 ```
 
 
@@ -136,8 +142,13 @@ format: html
 
 ```{r}
 # Your answer in code
-
-
+F_A <- function(x){
+    data.frame(
+    X_mean = mean(x), X_median = median(x), X_sd = sd(x) 
+    )
+}
+x <- c(1,2,3,4,5,6,7,8,9) #example
+F_A(x)
 
 ```
 
@@ -148,9 +159,12 @@ The output of `c('1' , "a", NA, "2", NA)` should be 2.
 
 ```{r}
 # Your answer in code
-
-
-
+library(magrittr)
+library(dplyr)
+library(tidyverse)
+c('1' , "a", NA, "2", NA) %>%
+    is.na() %>%
+    sum()
 ```
 
 
